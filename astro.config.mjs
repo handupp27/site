@@ -6,7 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://site.handupp27.workers.dev',
+	site: 'https://handupp27.com',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
