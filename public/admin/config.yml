@@ -17,5 +17,4 @@ collections:
       - {label: "标题", name: "title", widget: "string"}
       - {label: "摘要", name: "description", widget: "text"}
       - {label: "日期", name: "pubDate", widget: "datetime"}
-      - {label: "封面图", name: "heroImage", widget: "image", required: false}
       - {label: "正文", name: "body", widget: "markdown"}

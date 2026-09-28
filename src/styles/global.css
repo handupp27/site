@@ -139,3 +139,15 @@ hr {
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
 }
+
+/* 项目卡片网格（首页和项目页共用） */
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+}
+@media (max-width: 640px) {
+	.project-grid {
+		grid-template-columns: 1fr;
+	}
+}
