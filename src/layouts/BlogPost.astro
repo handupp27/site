@@ -5,10 +5,12 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import type { MarkdownHeading } from 'astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & { headings?: MarkdownHeading[] };
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, headings = [] } = Astro.props;
 ---
 
 <html lang="zh-CN">
@@ -52,6 +54,32 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			.last-updated-on {
 				font-style: italic;
 			}
+			/* 目录放在正文（720px + 两侧 1em padding）左边的空白里；
+			   外层 aside 撑满整篇文章的高度，里面的 nav 才能一路 sticky */
+			.post-body {
+				position: relative;
+			}
+			.toc-column {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: calc(50% + 360px + 2em);
+				width: min(220px, calc(50% - 360px - 3em));
+				padding-top: 1em;
+			}
+			@media (max-width: 1099px) {
+				.toc-column {
+					display: none;
+				}
+			}
+			.prose :is(h2, h3) {
+				scroll-margin-top: 1.5rem;
+			}
+			@media (prefers-reduced-motion: no-preference) {
+				:global(html) {
+					scroll-behavior: smooth;
+				}
+			}
 		</style>
 	</head>
 
@@ -62,22 +90,27 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<div class="hero-image">
 					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
 				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
+				<div class="post-body">
+					<aside class="toc-column">
+						<TableOfContents headings={headings} />
+					</aside>
+					<div class="prose">
+						<div class="title">
+							<div class="date">
+								<FormattedDate date={pubDate} />
+								{
+									updatedDate && (
+										<div class="last-updated-on">
+											Last updated on <FormattedDate date={updatedDate} />
+										</div>
+									)
+								}
+							</div>
+							<h1>{title}</h1>
+							<hr />
 						</div>
-						<h1>{title}</h1>
-						<hr />
+						<slot />
 					</div>
-					<slot />
 				</div>
 			</article>
 		</main>

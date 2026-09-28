@@ -1,0 +1,103 @@
+<button class="back-to-top" type="button" aria-label="回到顶部" title="回到顶部">
+	<svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
+		<path
+			fill="none"
+			stroke="currentColor"
+			stroke-width="1.8"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			d="M8 13V3M3.5 7.5 8 3l4.5 4.5"></path>
+	</svg>
+</button>
+
+<script>
+	const btn = document.querySelector<HTMLButtonElement>('.back-to-top');
+	if (btn) {
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+		let ticking = false;
+
+		// 滚过一屏才显示
+		const update = () => {
+			btn.classList.toggle('visible', window.scrollY > window.innerHeight);
+			ticking = false;
+		};
+		window.addEventListener(
+			'scroll',
+			() => {
+				if (!ticking) {
+					ticking = true;
+					requestAnimationFrame(update);
+				}
+			},
+			{ passive: true },
+		);
+		update();
+
+		btn.addEventListener('click', () => {
+			window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+			// 回到顶部后按钮会隐藏，把焦点交还给页面开头，键盘用户不会丢焦点
+			document.querySelector<HTMLElement>('header a')?.focus({ preventScroll: true });
+		});
+	}
+</script>
+
+<style>
+	.back-to-top {
+		position: fixed;
+		right: max(1.5rem, env(safe-area-inset-right));
+		bottom: max(1.5rem, env(safe-area-inset-bottom));
+		z-index: 20;
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		padding: 0;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 50%;
+		background: #fff;
+		color: rgb(var(--gray));
+		box-shadow: 0 2px 8px rgba(var(--gray), 25%);
+		cursor: pointer;
+		/* 隐藏时用 visibility，这样键盘 Tab 不会停在看不见的按钮上 */
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(8px);
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease,
+			visibility 0.2s;
+	}
+	.back-to-top.visible {
+		opacity: 1;
+		visibility: visible;
+		transform: none;
+	}
+	.back-to-top:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+	.back-to-top:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 3px;
+	}
+	@media (max-width: 720px) {
+		.back-to-top {
+			right: max(0.75rem, env(safe-area-inset-right));
+			bottom: max(0.75rem, env(safe-area-inset-bottom));
+			width: 36px;
+			height: 36px;
+			/* 半透明一点，压在正文上时不那么挡字 */
+			background: rgba(255, 255, 255, 0.85);
+		}
+		.back-to-top svg {
+			width: 16px;
+			height: 16px;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.back-to-top {
+			transition: none;
+			transform: none;
+		}
+	}
+</style>
