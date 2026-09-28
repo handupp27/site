@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: handupp27/site
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "blog"
+    label: "博客"
+    folder: "src/content/blog"
+    create: true
+    extension: "md"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "摘要", name: "description", widget: "text"}
+      - {label: "日期", name: "pubDate", widget: "datetime"}
+      - {label: "封面图", name: "heroImage", widget: "image", required: false}
+      - {label: "正文", name: "body", widget: "markdown"}
