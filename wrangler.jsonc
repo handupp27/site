@@ -5,5 +5,7 @@
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./dist"
-  }
+  },
+  // `wrangler preview` 要求有这个块，空着即可（预览沿用上面的静态资源设置）
+  "previews": {}
 }
