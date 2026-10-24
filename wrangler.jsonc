@@ -1,0 +1,11 @@
+{
+  // Cloudflare Workers 配置：把 Astro 构建出的 dist 目录作为静态网站发布
+  // 主分支用 `wrangler deploy` 上线，其他分支用 `wrangler preview` 生成预览网址
+  "name": "site",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist"
+  },
+  // `wrangler preview` 要求有这个块，空着即可（预览沿用上面的静态资源设置）
+  "previews": {}
+}
