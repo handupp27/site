@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 600" width="720" height="600" role="img" aria-labelledby="t d">
   <title id="t">小爱音箱接入 DeepSeek 的工作流程</title>
-  <desc id="d">你对小爱触屏音箱说话，音箱把对话记到小米云；广州服务器每秒拉取最新对话，按规则判断后问 DeepSeek 或直接报悉尼时间，再通过小米云下发朗读指令，由音箱念出来。</desc>
+  <desc id="d">你对小爱触屏音箱说话，音箱把对话记到小米云；服务器每秒拉取最新对话，按规则判断后问 DeepSeek 或直接报悉尼时间，再通过小米云下发朗读指令，由音箱念出来。</desc>
   <defs>
     <marker id="down" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#222939"/>
@@ -37,7 +37,7 @@
   <text class="name" x="360" y="244">小米云（对话记录）</text>
 
   <rect class="server" x="160" y="316" width="400" height="124" rx="10"/>
-  <text class="name" x="360" y="344">广州服务器 · xiaogpt + startup.py</text>
+  <text class="name" x="360" y="344">服务器 · xiaogpt + startup.py</text>
   <text class="rule" x="184" y="372">• 以“请/你觉得/帮我想想/问一下”开头 → 问 DeepSeek</text>
   <text class="rule" x="184" y="396">• 问时间（不带地名）→ 直接报悉尼时间</text>
   <text class="rule" x="184" y="420">• 其他 → 不处理，交给小爱</text>
