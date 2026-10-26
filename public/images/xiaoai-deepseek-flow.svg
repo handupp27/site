@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 600" width="720" height="600" role="img" aria-labelledby="t d">
+  <title id="t">小爱音箱接入 DeepSeek 的工作流程</title>
+  <desc id="d">你对小爱触屏音箱说话，音箱把对话记到小米云；广州服务器每秒拉取最新对话，按规则判断后问 DeepSeek 或直接报悉尼时间，再通过小米云下发朗读指令，由音箱念出来。</desc>
+  <defs>
+    <marker id="down" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222939"/>
+    </marker>
+    <marker id="up" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2337ff"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", "Noto Sans CJK TC", sans-serif; }
+    .box { fill: #f5f6fa; stroke: #c9d0dd; stroke-width: 1.5; }
+    .server { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.5; }
+    .name { font-size: 16px; font-weight: 600; fill: #0f1219; text-anchor: middle; }
+    .rule { font-size: 13px; fill: #222939; }
+    .step { font-size: 13px; fill: #222939; }
+    .step-up { font-size: 13px; fill: #2337ff; }
+    .note { font-size: 12px; fill: #60739f; }
+    .down { stroke: #222939; stroke-width: 1.8; marker-end: url(#down); }
+    .upline { stroke: #2337ff; stroke-width: 1.8; marker-end: url(#up); }
+  </style>
+
+  <rect width="720" height="600" fill="#ffffff"/>
+
+  <!-- 参与方 -->
+  <rect class="box" x="160" y="16" width="400" height="44" rx="10"/>
+  <text class="name" x="360" y="44">你</text>
+
+  <rect class="box" x="160" y="116" width="400" height="44" rx="10"/>
+  <text class="name" x="360" y="144">小爱触屏音箱（LX04）</text>
+  <text class="note" x="572" y="134">小爱会先用自己的</text>
+  <text class="note" x="572" y="152">知识库开口（拦不住）</text>
+
+  <rect class="box" x="160" y="216" width="400" height="44" rx="10"/>
+  <text class="name" x="360" y="244">小米云（对话记录）</text>
+
+  <rect class="server" x="160" y="316" width="400" height="124" rx="10"/>
+  <text class="name" x="360" y="344">广州服务器 · xiaogpt + startup.py</text>
+  <text class="rule" x="184" y="372">• 以“请/你觉得/帮我想想/问一下”开头 → 问 DeepSeek</text>
+  <text class="rule" x="184" y="396">• 问时间（不带地名）→ 直接报悉尼时间</text>
+  <text class="rule" x="184" y="420">• 其他 → 不处理，交给小爱</text>
+
+  <rect class="box" x="160" y="496" width="400" height="44" rx="10"/>
+  <text class="name" x="360" y="524">DeepSeek API</text>
+
+  <!-- 问题往下传（黑色） -->
+  <line class="down" x1="290" y1="62" x2="290" y2="112"/>
+  <text class="step" x="280" y="92" text-anchor="end">① 小爱同学，你觉得……</text>
+
+  <line class="down" x1="290" y1="162" x2="290" y2="212"/>
+  <text class="step" x="280" y="192" text-anchor="end">② 上传这句话和小爱的回答</text>
+
+  <line class="down" x1="290" y1="262" x2="290" y2="312"/>
+  <text class="step" x="280" y="292" text-anchor="end">③ 每秒拉取最新对话</text>
+
+  <line class="down" x1="290" y1="442" x2="290" y2="492"/>
+  <text class="step" x="280" y="472" text-anchor="end">④ 发送问题</text>
+
+  <!-- 回答往上传（蓝色） -->
+  <line class="upline" x1="430" y1="494" x2="430" y2="444"/>
+  <text class="step-up" x="440" y="472">⑤ 返回回答</text>
+
+  <line class="upline" x1="430" y1="314" x2="430" y2="264"/>
+  <text class="step-up" x="440" y="292">⑥ 下发朗读指令</text>
+
+  <line class="upline" x1="430" y1="214" x2="430" y2="164"/>
+  <text class="step-up" x="440" y="192">⑦ 转给音箱</text>
+
+  <line class="upline" x1="430" y1="114" x2="430" y2="64"/>
+  <text class="step-up" x="440" y="92">⑧ 念出回答</text>
+
+  <!-- 图例 -->
+  <line class="down" x1="196" y1="576" x2="230" y2="576"/>
+  <text class="note" x="240" y="580">问题往下传</text>
+  <line class="upline" x1="376" y1="576" x2="410" y2="576"/>
+  <text class="note" x="420" y="580">回答往上传（问时间时跳过 ④⑤）</text>
+</svg>
