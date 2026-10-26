@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 504" width="720" height="504" role="img" aria-labelledby="t d">
+  <title id="t">断线重连的流程</title>
+  <desc id="d">三种情况会触发重连：网络断开（12 秒收不到消息）、手机切到后台超过 5 秒、App 被杀后重开。断线后服务器给这个座位保留 90 秒，对方的棋盘冻结并显示倒计时。掉线的一方用新连接带着房间号和座位凭证重新加入，回到原来的座位，再同步棋谱继续下。90 秒没回来，对方收到离开，房间关闭。</desc>
+  <defs>
+    <marker id="dk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222939"/>
+    </marker>
+    <marker id="gy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#60739f"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", "Noto Sans CJK TC", sans-serif; }
+    .box { fill: #f5f6fa; stroke: #c9d0dd; stroke-width: 1.5; }
+    .server { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.5; }
+    .end { fill: #ffffff; stroke: #9aa6c0; stroke-width: 1.4; stroke-dasharray: 5 4; }
+    .name { font-size: 15px; font-weight: 600; fill: #0f1219; text-anchor: middle; }
+    .name-bl { font-size: 15px; font-weight: 600; fill: #2337ff; text-anchor: middle; }
+    .line { font-size: 13px; fill: #222939; text-anchor: middle; }
+    .small { font-size: 12px; fill: #60739f; text-anchor: middle; }
+    .a-dk { fill: none; stroke: #222939; stroke-width: 1.6; marker-end: url(#dk); }
+    .a-gy { fill: none; stroke: #9aa6c0; stroke-width: 1.4; marker-end: url(#gy); }
+  </style>
+
+  <rect width="720" height="504" fill="#ffffff"/>
+
+  <!-- 三种触发 -->
+  <rect class="box" x="12" y="16" width="216" height="64" rx="10"/>
+  <text class="name" x="120" y="42">网络断开</text>
+  <text class="small" x="120" y="64">12 秒收不到任何消息</text>
+
+  <rect class="box" x="252" y="16" width="216" height="64" rx="10"/>
+  <text class="name" x="360" y="42">手机切到后台</text>
+  <text class="small" x="360" y="64">超过 5 秒，回来直接换新连接</text>
+
+  <rect class="box" x="492" y="16" width="216" height="64" rx="10"/>
+  <text class="name" x="600" y="42">App 被杀后重开</text>
+  <text class="small" x="600" y="64">本地存着房间号和座位凭证</text>
+
+  <line class="a-dk" x1="120" y1="82" x2="236" y2="136"/>
+  <line class="a-dk" x1="360" y1="82" x2="360" y2="136"/>
+  <line class="a-dk" x1="600" y1="82" x2="484" y2="136"/>
+
+  <!-- 座位保留 -->
+  <rect class="server" x="160" y="140" width="400" height="70" rx="10"/>
+  <text class="name" x="360" y="168">服务器给这个座位保留 90 秒</text>
+  <text class="line" x="360" y="192">对方的棋盘冻结，显示“对方掉线了，还剩 N 秒”</text>
+
+  <line class="a-gy" x1="562" y1="175" x2="581" y2="175"/>
+  <rect class="end" x="584" y="140" width="124" height="70" rx="10"/>
+  <text class="small" x="646" y="164">90 秒没回来</text>
+  <text class="small" x="646" y="182">对方收到“离开”</text>
+  <text class="small" x="646" y="200">房间关闭</text>
+
+  <line class="a-dk" x1="360" y1="212" x2="360" y2="243"/>
+
+  <!-- 重连 -->
+  <rect class="box" x="160" y="246" width="400" height="56" rx="10"/>
+  <text class="name" x="360" y="270">用新连接重新加入</text>
+  <text class="line" x="360" y="292">带上房间号和自己的座位凭证</text>
+
+  <line class="a-dk" x1="360" y1="304" x2="360" y2="335"/>
+
+  <rect class="server" x="160" y="338" width="400" height="48" rx="10"/>
+  <text class="name-bl" x="360" y="368">回到原来的座位，对手和房间都还在</text>
+
+  <line class="a-dk" x1="360" y1="388" x2="360" y2="419"/>
+
+  <rect class="box" x="160" y="422" width="400" height="64" rx="10"/>
+  <text class="name" x="360" y="448">同步棋谱，接着下</text>
+  <text class="line" x="360" y="472">客人向房主要完整棋谱，房主也主动发一次</text>
+</svg>

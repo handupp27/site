@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 450" width="720" height="450" role="img" aria-labelledby="t d">
+  <title id="t">五子棋联机和更新的整体结构</title>
+  <desc id="d">房主和客人都连到服务器上的中转服务：客人发落子请求，房主校验后把结果发回去，中转服务只转发。服务器上还有一个更新服务，游戏启动时从这里检查和下载更新包；发版电脑把签好名的更新包上传到更新服务。</desc>
+  <defs>
+    <marker id="dk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222939"/>
+    </marker>
+    <marker id="bl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2337ff"/>
+    </marker>
+    <marker id="gy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#60739f"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", "Noto Sans CJK TC", sans-serif; }
+    .box { fill: #f5f6fa; stroke: #c9d0dd; stroke-width: 1.5; }
+    .server { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.5; }
+    .group { fill: #fbfbff; stroke: #2337ff; stroke-width: 1.2; stroke-dasharray: 6 5; }
+    .name { font-size: 16px; font-weight: 600; fill: #0f1219; text-anchor: middle; }
+    .line { font-size: 13px; fill: #222939; text-anchor: middle; }
+    .label { font-size: 12px; fill: #222939; text-anchor: middle; }
+    .label-bl { font-size: 12px; fill: #2337ff; text-anchor: middle; }
+    .note { font-size: 12px; fill: #60739f; }
+    .grp { font-size: 12px; font-weight: 600; fill: #2337ff; }
+    .a-dk { fill: none; stroke: #222939; stroke-width: 1.8; marker-end: url(#dk); }
+    .a-bl { fill: none; stroke: #2337ff; stroke-width: 1.8; marker-end: url(#bl); }
+    .a-gy { fill: none; stroke: #60739f; stroke-width: 1.5; stroke-dasharray: 5 4; marker-end: url(#gy); }
+  </style>
+
+  <rect width="720" height="450" fill="#ffffff"/>
+
+  <!-- 服务器 -->
+  <rect class="group" x="258" y="12" width="204" height="290" rx="14"/>
+  <text class="grp" x="270" y="32">服务器</text>
+
+  <rect class="server" x="270" y="46" width="180" height="96" rx="10"/>
+  <text class="name" x="360" y="74">中转服务</text>
+  <text class="line" x="360" y="98">Python + WebSocket</text>
+  <text class="line" x="360" y="122">配对、转发，不看内容</text>
+
+  <rect class="server" x="270" y="190" width="180" height="96" rx="10"/>
+  <text class="name" x="360" y="218">更新服务</text>
+  <text class="line" x="360" y="242">nginx，只提供下载</text>
+  <text class="line" x="360" y="266">版本信息 + 更新包</text>
+
+  <!-- 玩家 -->
+  <rect class="box" x="10" y="46" width="200" height="96" rx="10"/>
+  <text class="name" x="110" y="74">房主（建房的一方）</text>
+  <text class="line" x="110" y="98">校验落子、判定胜负</text>
+  <text class="line" x="110" y="122">棋局以它为准</text>
+
+  <rect class="box" x="510" y="46" width="200" height="96" rx="10"/>
+  <text class="name" x="610" y="74">客人（加入的一方）</text>
+  <text class="line" x="610" y="98">只发“想下在这里”</text>
+  <text class="line" x="610" y="122">按房主的结果更新棋盘</text>
+
+  <!-- 联机消息 -->
+  <line class="a-bl" x1="212" y1="80" x2="267" y2="80"/>
+  <text class="label-bl" x="233" y="72">结果</text>
+  <line class="a-dk" x1="268" y1="112" x2="213" y2="112"/>
+  <text class="label" x="233" y="130">请求</text>
+
+  <line class="a-bl" x1="452" y1="80" x2="507" y2="80"/>
+  <text class="label-bl" x="487" y="72">结果</text>
+  <line class="a-dk" x1="508" y1="112" x2="453" y2="112"/>
+  <text class="label" x="487" y="130">请求</text>
+
+  <!-- 更新 -->
+  <path class="a-gy" d="M268,250 L110,250 L110,146"/>
+  <text class="note" x="122" y="242">启动时检查、下载更新</text>
+  <path class="a-gy" d="M452,250 L610,250 L610,146"/>
+  <text class="note" x="598" y="242" text-anchor="end">启动时检查、下载更新</text>
+
+  <!-- 发版 -->
+  <rect class="box" x="270" y="360" width="180" height="72" rx="10"/>
+  <text class="name" x="360" y="390">发版电脑</text>
+  <text class="line" x="360" y="414">导出 → 签名 → 上传</text>
+  <line class="a-bl" x1="360" y1="358" x2="360" y2="290"/>
+  <text class="note" x="372" y="330">只传几百 KB 的更新包</text>
+</svg>

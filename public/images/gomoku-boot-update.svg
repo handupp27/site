@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 680" width="720" height="680" role="img" aria-labelledby="t d">
+  <title id="t">启动器检查更新的流程</title>
+  <desc id="d">打开游戏先运行启动器：请求版本信息，验证签名，比较安装包版本，确认有新的更新包后下载到临时文件，校验 sha256，改名并记下版本号，再加载更新包进入游戏。任何一步失败，比如没网、签名不对、安装包太旧、下载失败或校验不对，都改用本地已有的版本进入游戏。</desc>
+  <defs>
+    <marker id="dk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222939"/>
+    </marker>
+    <marker id="gy" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#60739f"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", "Noto Sans CJK TC", sans-serif; }
+    .box { fill: #f5f6fa; stroke: #c9d0dd; stroke-width: 1.5; }
+    .server { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.5; }
+    .local { fill: #ffffff; stroke: #60739f; stroke-width: 1.5; stroke-dasharray: 5 4; }
+    .step { font-size: 15px; font-weight: 600; fill: #0f1219; text-anchor: middle; }
+    .step-bl { font-size: 15px; font-weight: 600; fill: #2337ff; text-anchor: middle; }
+    .why { font-size: 12px; fill: #60739f; }
+    .note-c { font-size: 12px; fill: #60739f; text-anchor: middle; }
+    .a-dk { fill: none; stroke: #222939; stroke-width: 1.6; marker-end: url(#dk); }
+    .fail { fill: none; stroke: #9aa6c0; stroke-width: 1.4; }
+    .bus { fill: none; stroke: #9aa6c0; stroke-width: 1.4; marker-end: url(#gy); }
+  </style>
+
+  <rect width="720" height="680" fill="#ffffff"/>
+
+  <!-- 主流程 -->
+  <rect class="box" x="30" y="16" width="340" height="44" rx="10"/>
+  <text class="step" x="200" y="43">打开游戏，先运行启动器</text>
+  <line class="a-dk" x1="200" y1="62" x2="200" y2="83"/>
+
+  <rect class="box" x="30" y="86" width="340" height="44" rx="10"/>
+  <text class="step" x="200" y="113">请求版本信息（5 秒超时）</text>
+  <line class="a-dk" x1="200" y1="132" x2="200" y2="153"/>
+
+  <rect class="box" x="30" y="156" width="340" height="44" rx="10"/>
+  <text class="step" x="200" y="183">验证签名</text>
+  <line class="a-dk" x1="200" y1="202" x2="200" y2="223"/>
+
+  <rect class="box" x="30" y="226" width="340" height="44" rx="10"/>
+  <text class="step" x="200" y="253">安装包版本和更新包要求的一致？</text>
+  <line class="a-dk" x1="200" y1="272" x2="200" y2="293"/>
+
+  <rect class="box" x="30" y="296" width="340" height="44" rx="10"/>
+  <text class="step" x="200" y="323">服务器上有更新的版本？</text>
+  <line class="a-dk" x1="200" y1="342" x2="200" y2="363"/>
+
+  <rect class="box" x="30" y="366" width="340" height="44" rx="10"/>
+  <text class="step" x="200" y="393">下载到临时文件（可以点“跳过”）</text>
+  <line class="a-dk" x1="200" y1="412" x2="200" y2="433"/>
+
+  <rect class="box" x="30" y="436" width="340" height="44" rx="10"/>
+  <text class="step" x="200" y="463">校验 sha256</text>
+  <line class="a-dk" x1="200" y1="482" x2="200" y2="503"/>
+
+  <rect class="box" x="30" y="506" width="340" height="44" rx="10"/>
+  <text class="step" x="200" y="533">改成正式文件名，记下版本号</text>
+  <line class="a-dk" x1="200" y1="552" x2="200" y2="573"/>
+
+  <rect class="server" x="30" y="576" width="340" height="44" rx="10"/>
+  <text class="step-bl" x="200" y="603">加载新的更新包，进入游戏</text>
+
+  <!-- 失败分支 -->
+  <line class="fail" x1="372" y1="108" x2="560" y2="108"/>
+  <text class="why" x="384" y="101">没网、超时</text>
+  <line class="fail" x1="372" y1="178" x2="560" y2="178"/>
+  <text class="why" x="384" y="171">签名不对（可能被改过）</text>
+  <line class="fail" x1="372" y1="248" x2="560" y2="248"/>
+  <text class="why" x="384" y="241">安装包太旧：弹窗提示下载新版</text>
+  <text class="why" x="384" y="264">安装包比它新：忽略这个包</text>
+  <line class="fail" x1="372" y1="318" x2="560" y2="318"/>
+  <text class="why" x="384" y="311">没有新版本</text>
+  <line class="fail" x1="372" y1="388" x2="560" y2="388"/>
+  <text class="why" x="384" y="381">下载失败，或点了跳过</text>
+  <line class="fail" x1="372" y1="458" x2="560" y2="458"/>
+  <text class="why" x="384" y="451">不对：丢掉临时文件</text>
+  <line class="bus" x1="560" y1="108" x2="560" y2="573"/>
+
+  <rect class="local" x="420" y="576" width="280" height="44" rx="10"/>
+  <text class="step" x="560" y="603">用本地已有的版本进入游戏</text>
+
+  <text class="note-c" x="360" y="656">本地的版本 = 安装包自带的内容，或者以前下载并校验过的更新包</text>
+</svg>

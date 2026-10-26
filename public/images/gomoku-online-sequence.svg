@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" width="720" height="560" role="img" aria-labelledby="t d">
+  <title id="t">一局联机的消息顺序</title>
+  <desc id="d">房主建房拿到房间号，客人用房间号或在大厅加入，服务器给双方发配对成功。之后的消息都由服务器原样转发：房主决定先后手并通知客人；客人发出想下的位置，房主校验并判断胜负后，把正式的落子或拒绝发回客人，有人连成五子时房主发出终局。</desc>
+  <defs>
+    <marker id="dk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222939"/>
+    </marker>
+    <marker id="bl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2337ff"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", "Noto Sans CJK TC", sans-serif; }
+    .box { fill: #f5f6fa; stroke: #c9d0dd; stroke-width: 1.5; }
+    .server { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.5; }
+    .act { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.2; }
+    .name { font-size: 16px; font-weight: 600; fill: #0f1219; text-anchor: middle; }
+    .msg { font-size: 13px; fill: #222939; text-anchor: middle; }
+    .msg-bl { font-size: 13px; fill: #2337ff; text-anchor: middle; }
+    .note { font-size: 12px; fill: #60739f; }
+    .note-c { font-size: 12px; fill: #60739f; text-anchor: middle; }
+    .life { stroke: #c9d0dd; stroke-width: 1.5; stroke-dasharray: 4 4; }
+    .sep { stroke: #9aa6c0; stroke-width: 1; stroke-dasharray: 2 4; }
+    .a-dk { fill: none; stroke: #222939; stroke-width: 1.6; marker-end: url(#dk); }
+    .a-bl { fill: none; stroke: #2337ff; stroke-width: 1.6; marker-end: url(#bl); }
+  </style>
+
+  <rect width="720" height="560" fill="#ffffff"/>
+
+  <!-- 参与方 -->
+  <rect class="box" x="30" y="14" width="160" height="40" rx="10"/>
+  <text class="name" x="110" y="40">房主</text>
+  <rect class="server" x="280" y="14" width="160" height="40" rx="10"/>
+  <text class="name" x="360" y="40">中转服务</text>
+  <rect class="box" x="530" y="14" width="160" height="40" rx="10"/>
+  <text class="name" x="610" y="40">客人</text>
+
+  <line class="life" x1="110" y1="56" x2="110" y2="520"/>
+  <line class="life" x1="360" y1="56" x2="360" y2="520"/>
+  <line class="life" x1="610" y1="56" x2="610" y2="520"/>
+
+  <!-- 建房和配对 -->
+  <line class="a-dk" x1="112" y1="88" x2="357" y2="88"/>
+  <text class="msg" x="235" y="80">建房</text>
+  <line class="a-dk" x1="358" y1="118" x2="113" y2="118"/>
+  <text class="msg" x="235" y="110">6 位房间号</text>
+
+  <text class="note-c" x="485" y="140">房间号发给朋友，或者在大厅里点“加入”</text>
+
+  <line class="a-dk" x1="608" y1="176" x2="363" y2="176"/>
+  <text class="msg" x="485" y="168">加入</text>
+  <line class="a-dk" x1="358" y1="212" x2="113" y2="212"/>
+  <text class="msg" x="235" y="204">配对成功</text>
+  <line class="a-dk" x1="362" y1="212" x2="607" y2="212"/>
+  <text class="msg" x="485" y="204">配对成功</text>
+
+  <!-- 分隔 -->
+  <line class="sep" x1="20" y1="240" x2="700" y2="240"/>
+  <rect x="246" y="230" width="228" height="20" fill="#ffffff"/>
+  <text class="note-c" x="360" y="245">以下消息服务器都只是原样转发</text>
+
+  <!-- 对局 -->
+  <line class="a-bl" x1="112" y1="284" x2="607" y2="284"/>
+  <text class="msg-bl" x="235" y="276">开局：谁执黑（房主定）</text>
+
+  <line class="a-dk" x1="608" y1="330" x2="113" y2="330"/>
+  <text class="msg" x="485" y="322">想下在 H8</text>
+
+  <rect class="act" x="102" y="342" width="16" height="70" rx="3"/>
+  <text class="note" x="130" y="362">轮到他了吗？这格空吗？</text>
+  <text class="note" x="130" y="380">手数对得上吗？</text>
+  <text class="note" x="130" y="398">落下后有没有连五？</text>
+
+  <line class="a-bl" x1="112" y1="440" x2="607" y2="440"/>
+  <text class="msg-bl" x="235" y="432">正式落子（或拒绝）</text>
+
+  <line class="a-bl" x1="112" y1="496" x2="607" y2="496"/>
+  <text class="msg-bl" x="235" y="488">有人连五：终局结果</text>
+
+  <text class="note-c" x="360" y="546">两边手数对不上时，客人向房主要一份完整棋谱，重放一遍</text>
+</svg>
