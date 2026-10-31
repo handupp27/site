@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="t d">
+  <title id="t">子 agent、主 agent 和我的分工</title>
+  <desc id="d">读、查、审交给子 agent；写代码和小判断交给主 agent；需要权衡取舍的大判断留给我自己。</desc>
+  <defs>
+    <marker id="dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222939"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", sans-serif; }
+    .box { fill: #f5f6fa; stroke: #c9d0dd; stroke-width: 1.5; }
+    .main { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.5; }
+    .me { fill: #2337ff; stroke: #2337ff; stroke-width: 1.5; }
+    .name { font-size: 17px; font-weight: 600; fill: #0f1219; text-anchor: middle; }
+    .name-w { font-size: 17px; font-weight: 600; fill: #ffffff; text-anchor: middle; }
+    .big { font-size: 22px; font-weight: 700; fill: #2337ff; text-anchor: middle; }
+    .big-w { font-size: 22px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+    .item { font-size: 13px; fill: #222939; }
+    .item-w { font-size: 13px; fill: #ffffff; }
+    .flow { stroke: #222939; stroke-width: 1.8; marker-end: url(#dark); fill: none; }
+    .note { font-size: 12px; fill: #60739f; text-anchor: middle; }
+  </style>
+
+  <rect width="720" height="360" fill="#ffffff"/>
+
+  <!-- 子 agent -->
+  <rect class="box" x="16" y="16" width="208" height="276" rx="10"/>
+  <text class="name" x="120" y="48">子 agent</text>
+  <text class="big" x="120" y="88">读 · 查 · 审</text>
+  <text class="item" x="36" y="128">• 摸清代码结构</text>
+  <text class="item" x="36" y="154">• 查资料、做调研</text>
+  <text class="item" x="36" y="180">• 改完代码后挑刺</text>
+  <text class="item" x="36" y="206">• 各持一种猜测找 bug</text>
+  <text class="item" x="36" y="232">• 有标准答案的判断</text>
+  <text class="item" x="52" y="252">（有没有 bug、合不合规范）</text>
+
+  <path class="flow" d="M226,154 L250,154"/>
+
+  <!-- 主 agent -->
+  <rect class="main" x="256" y="16" width="208" height="276" rx="10"/>
+  <text class="name" x="360" y="48">主 agent</text>
+  <text class="big" x="360" y="88">写 · 小判断</text>
+  <text class="item" x="276" y="128">• 汇总几份报告</text>
+  <text class="item" x="276" y="154">• 发现矛盾就追问、再派</text>
+  <text class="item" x="276" y="180">• 统一动手写代码</text>
+  <text class="item" x="276" y="206">• 小事直接拍板</text>
+  <text class="item" x="292" y="226">（函数名、写法细节）</text>
+  <text class="item" x="276" y="252">• 大事给出建议和理由</text>
+
+  <path class="flow" d="M466,154 L490,154"/>
+
+  <!-- 我 -->
+  <rect class="me" x="496" y="16" width="208" height="276" rx="10"/>
+  <text class="name-w" x="600" y="48">我</text>
+  <text class="big-w" x="600" y="88">大判断</text>
+  <text class="item-w" x="516" y="128">• 选哪个方案</text>
+  <text class="item-w" x="516" y="154">• 风险值不值得冒</text>
+  <text class="item-w" x="516" y="180">• 先求快还是先求稳</text>
+  <text class="item-w" x="516" y="206">• 不好回头的决定</text>
+  <text class="item-w" x="532" y="226">（架构方向、动数据）</text>
+
+  <text class="note" x="360" y="324">权衡取舍依赖子 agent 不知道的背景，判断错了承担后果的也是我</text>
+</svg>

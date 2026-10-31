@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" width="720" height="520" role="img" aria-labelledby="t d">
+  <title id="t">主 agent 当主持人的多轮辩论</title>
+  <desc id="d">三个子 agent 分别代表方案 A、B、C，彼此不能直接对话，所有发言都经过主 agent 转交。流程分三轮：开场陈述、交叉质询、回应，最后由主 agent 当裁判。</desc>
+  <defs>
+    <marker id="dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222939"/>
+    </marker>
+    <marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2337ff"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", sans-serif; }
+    .box { fill: #f5f6fa; stroke: #c9d0dd; stroke-width: 1.5; }
+    .main { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.5; }
+    .judge { fill: #2337ff; stroke: #2337ff; stroke-width: 1.5; }
+    .name { font-size: 16px; font-weight: 600; fill: #0f1219; text-anchor: middle; }
+    .name-w { font-size: 15px; font-weight: 600; fill: #ffffff; text-anchor: middle; }
+    .sub { font-size: 13px; fill: #60739f; text-anchor: middle; }
+    .small { font-size: 12px; fill: #222939; text-anchor: middle; }
+    .note { font-size: 12px; fill: #60739f; text-anchor: middle; }
+    .both { stroke: #2337ff; stroke-width: 1.8; marker-start: url(#blue); marker-end: url(#blue); fill: none; }
+    .flow { stroke: #222939; stroke-width: 1.8; marker-end: url(#dark); fill: none; }
+    .wall { stroke: #c9d0dd; stroke-width: 1.5; stroke-dasharray: 5 5; }
+    .x { stroke: #c0392b; stroke-width: 2; }
+    .sep { stroke: #e5e9f0; stroke-width: 1.5; }
+  </style>
+
+  <rect width="720" height="520" fill="#ffffff"/>
+
+  <!-- 主持人 -->
+  <rect class="main" x="190" y="16" width="340" height="64" rx="10"/>
+  <text class="name" x="360" y="44">主 agent（主持人 + 裁判）</text>
+  <text class="sub" x="360" y="66">转话、追问、最后打分</text>
+
+  <!-- 双向传话 -->
+  <path class="both" d="M250,84 L140,170"/>
+  <path class="both" d="M360,84 L360,170"/>
+  <path class="both" d="M470,84 L580,170"/>
+  <text class="small" x="150" y="128">转交原文</text>
+  <text class="small" x="410" y="132">交回发言</text>
+
+  <!-- 辩手 -->
+  <rect class="box" x="40" y="174" width="200" height="60" rx="10"/>
+  <text class="name" x="140" y="200">辩手 A</text>
+  <text class="sub" x="140" y="221">只为方案 A 辩护</text>
+
+  <rect class="box" x="260" y="174" width="200" height="60" rx="10"/>
+  <text class="name" x="360" y="200">辩手 B</text>
+  <text class="sub" x="360" y="221">只为方案 B 辩护</text>
+
+  <rect class="box" x="480" y="174" width="200" height="60" rx="10"/>
+  <text class="name" x="580" y="200">辩手 C</text>
+  <text class="sub" x="580" y="221">只为方案 C 辩护</text>
+
+  <line class="wall" x1="250" y1="170" x2="250" y2="238"/>
+  <line class="wall" x1="470" y1="170" x2="470" y2="238"/>
+  <line class="x" x1="243" y1="197" x2="257" y2="211"/>
+  <line class="x" x1="257" y1="197" x2="243" y2="211"/>
+  <line class="x" x1="463" y1="197" x2="477" y2="211"/>
+  <line class="x" x1="477" y1="197" x2="463" y2="211"/>
+  <text class="note" x="360" y="262">辩手之间不能直接对话，所有发言都由主 agent 转交</text>
+
+  <line class="sep" x1="40" y1="288" x2="680" y2="288"/>
+
+  <!-- 三轮流程 -->
+  <rect class="box" x="16" y="316" width="148" height="104" rx="10"/>
+  <text class="name" x="90" y="344">第 1 轮</text>
+  <text class="small" x="90" y="368">开场陈述</text>
+  <text class="note" x="90" y="390">各自论证优势</text>
+  <text class="note" x="90" y="408">（最多 5 点）</text>
+
+  <path class="flow" d="M166,368 L190,368"/>
+
+  <rect class="box" x="194" y="316" width="148" height="104" rx="10"/>
+  <text class="name" x="268" y="344">第 2 轮</text>
+  <text class="small" x="268" y="368">交叉质询</text>
+  <text class="note" x="268" y="390">拿到对方原文</text>
+  <text class="note" x="268" y="408">引用原话再反驳</text>
+
+  <path class="flow" d="M344,368 L368,368"/>
+
+  <rect class="box" x="372" y="316" width="148" height="104" rx="10"/>
+  <text class="name" x="446" y="344">第 3 轮</text>
+  <text class="small" x="446" y="368">回应</text>
+  <text class="note" x="446" y="390">哪些是真问题</text>
+  <text class="note" x="446" y="408">哪些是误解</text>
+
+  <path class="flow" d="M522,368 L546,368"/>
+
+  <rect class="judge" x="550" y="316" width="154" height="104" rx="10"/>
+  <text class="name-w" x="627" y="344">裁判</text>
+  <text class="name-w" x="627" y="370" style="font-size:12px;font-weight:400">逐条判定</text>
+  <text class="name-w" x="627" y="390" style="font-size:12px;font-weight:400">按标准打分</text>
+  <text class="name-w" x="627" y="408" style="font-size:12px;font-weight:400">给推荐和风险</text>
+
+  <text class="note" x="360" y="460">最可信的产出：被指出、而且辩手自己也承认的问题</text>
+  <text class="note" x="360" y="484">研究发现收益主要集中在第一次交换意见，轮数不是越多越好</text>
+</svg>

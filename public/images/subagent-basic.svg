@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 470" width="720" height="470" role="img" aria-labelledby="t d">
+  <title id="t">子 agent 的基本结构</title>
+  <desc id="d">你把任务交给主 agent；主 agent 写好任务说明，派给三个子 agent。每个子 agent 有自己独立的上下文和工具，互相看不见，干完只把报告交回主 agent。</desc>
+  <defs>
+    <marker id="down" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222939"/>
+    </marker>
+    <marker id="up" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2337ff"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", sans-serif; }
+    .box { fill: #f5f6fa; stroke: #c9d0dd; stroke-width: 1.5; }
+    .main { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.5; }
+    .name { font-size: 16px; font-weight: 600; fill: #0f1219; text-anchor: middle; }
+    .sub { font-size: 13px; fill: #60739f; text-anchor: middle; }
+    .step { font-size: 13px; fill: #222939; }
+    .step-up { font-size: 13px; fill: #2337ff; }
+    .note { font-size: 12px; fill: #60739f; text-anchor: middle; }
+    .down { stroke: #222939; stroke-width: 1.8; marker-end: url(#down); fill: none; }
+    .upline { stroke: #2337ff; stroke-width: 1.8; marker-end: url(#up); fill: none; }
+    .wall { stroke: #c9d0dd; stroke-width: 1.5; stroke-dasharray: 5 5; }
+    .x { stroke: #c0392b; stroke-width: 2; }
+  </style>
+
+  <rect width="720" height="470" fill="#ffffff"/>
+
+  <!-- 你 -->
+  <rect class="box" x="260" y="16" width="200" height="44" rx="10"/>
+  <text class="name" x="360" y="44">你</text>
+
+  <line class="down" x1="360" y1="62" x2="360" y2="108"/>
+  <text class="step" x="372" y="90">提出任务</text>
+
+  <!-- 主 agent -->
+  <rect class="main" x="200" y="112" width="320" height="64" rx="10"/>
+  <text class="name" x="360" y="140">主 agent</text>
+  <text class="sub" x="360" y="162">掌握完整对话，负责派活、汇总、动手</text>
+
+  <!-- 往下：任务说明 -->
+  <path class="down" d="M250,178 L130,276"/>
+  <path class="down" d="M340,178 L340,276"/>
+  <path class="down" d="M430,178 L550,276"/>
+  <text class="step" x="118" y="222">任务说明</text>
+
+  <!-- 往上：报告 -->
+  <path class="upline" d="M170,278 L282,180"/>
+  <path class="upline" d="M380,278 L380,180"/>
+  <path class="upline" d="M590,278 L470,180"/>
+  <text class="step-up" x="534" y="222">只交回报告</text>
+
+  <!-- 子 agent -->
+  <rect class="box" x="40" y="280" width="200" height="84" rx="10"/>
+  <text class="name" x="140" y="310">子 agent A</text>
+  <text class="sub" x="140" y="332">独立上下文</text>
+  <text class="sub" x="140" y="352">自己的工具和权限</text>
+
+  <rect class="box" x="260" y="280" width="200" height="84" rx="10"/>
+  <text class="name" x="360" y="310">子 agent B</text>
+  <text class="sub" x="360" y="332">独立上下文</text>
+  <text class="sub" x="360" y="352">自己的工具和权限</text>
+
+  <rect class="box" x="480" y="280" width="200" height="84" rx="10"/>
+  <text class="name" x="580" y="310">子 agent C</text>
+  <text class="sub" x="580" y="332">独立上下文</text>
+  <text class="sub" x="580" y="352">自己的工具和权限</text>
+
+  <!-- 互相看不见 -->
+  <line class="wall" x1="250" y1="276" x2="250" y2="368"/>
+  <line class="wall" x1="470" y1="276" x2="470" y2="368"/>
+  <line class="x" x1="243" y1="315" x2="257" y2="329"/>
+  <line class="x" x1="257" y1="315" x2="243" y2="329"/>
+  <line class="x" x1="463" y1="315" x2="477" y2="329"/>
+  <line class="x" x1="477" y1="315" x2="463" y2="329"/>
+
+  <text class="note" x="360" y="402">子 agent 之间互相看不见，也不能直接对话；中间翻了什么、试了什么，主 agent 都看不到</text>
+  <text class="note" x="360" y="426">主 agent 只拿到最后那份报告</text>
+</svg>

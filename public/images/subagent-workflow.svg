@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 610" width="720" height="610" role="img" aria-labelledby="t d">
+  <title id="t">子 agent 的完整工作流程</title>
+  <desc id="d">七步：我提出任务；主 agent 判断要不要派子 agent，不派就自己做；写任务说明；子 agent 在独立上下文里干活；交回报告；主 agent 汇总核对，不清楚就追问或再派；主 agent 动手；大事由我拍板。</desc>
+  <defs>
+    <marker id="dark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222939"/>
+    </marker>
+    <marker id="blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2337ff"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", sans-serif; }
+    .box { fill: #f5f6fa; stroke: #c9d0dd; stroke-width: 1.5; }
+    .main { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.5; }
+    .me { fill: #2337ff; stroke: #2337ff; stroke-width: 1.5; }
+    .num { font-size: 15px; font-weight: 700; fill: #2337ff; text-anchor: middle; }
+    .name { font-size: 15px; font-weight: 600; fill: #0f1219; }
+    .name-w { font-size: 15px; font-weight: 600; fill: #ffffff; }
+    .note { font-size: 12px; fill: #60739f; }
+    .step-up { font-size: 12px; fill: #2337ff; }
+    .flow { stroke: #222939; stroke-width: 1.8; marker-end: url(#dark); fill: none; }
+    .back { stroke: #2337ff; stroke-width: 1.6; stroke-dasharray: 5 4; marker-end: url(#blue); fill: none; }
+    .who { font-size: 12px; fill: #60739f; text-anchor: end; }
+  </style>
+
+  <rect width="720" height="610" fill="#ffffff"/>
+
+  <!-- ① -->
+  <rect class="me" x="140" y="16" width="320" height="48" rx="10"/>
+  <text class="name-w" x="160" y="45">① 我提出任务</text>
+  <path class="flow" d="M300,66 L300,86"/>
+
+  <!-- ② -->
+  <rect class="main" x="140" y="90" width="320" height="48" rx="10"/>
+  <text class="name" x="160" y="119">② 要不要派子 agent？</text>
+  <text class="note" x="476" y="110">读、查、审、任务独立 → 派</text>
+  <text class="note" x="476" y="128">小任务、要写代码 → 主 agent 自己做</text>
+  <path class="flow" d="M300,140 L300,160"/>
+
+  <!-- ③ -->
+  <rect class="main" x="140" y="164" width="320" height="48" rx="10"/>
+  <text class="name" x="160" y="193">③ 写任务说明（最关键）</text>
+  <text class="note" x="476" y="184">背景、约束、做什么、范围到哪</text>
+  <text class="note" x="476" y="202">交回什么格式</text>
+  <path class="flow" d="M300,214 L300,234"/>
+
+  <!-- ④ -->
+  <rect class="box" x="140" y="238" width="320" height="48" rx="10"/>
+  <text class="name" x="160" y="267">④ 子 agent 独立干活（可并行）</text>
+  <text class="note" x="476" y="258">从零开始，互相看不见</text>
+  <text class="note" x="476" y="276">过程对主 agent 不可见</text>
+  <path class="flow" d="M300,288 L300,308"/>
+
+  <!-- ⑤ -->
+  <rect class="box" x="140" y="312" width="320" height="48" rx="10"/>
+  <text class="name" x="160" y="341">⑤ 交回报告</text>
+  <text class="note" x="476" y="332">结论 + 证据 + 把握有多大</text>
+  <text class="note" x="476" y="350">没交稿前停掉 = 什么都拿不到</text>
+  <path class="flow" d="M300,362 L300,382"/>
+
+  <!-- ⑥ -->
+  <rect class="main" x="140" y="386" width="320" height="48" rx="10"/>
+  <text class="name" x="160" y="415">⑥ 主 agent 汇总、核对</text>
+  <text class="note" x="476" y="406">有矛盾或说得含糊</text>
+  <text class="note" x="476" y="424">就追问，或者再派一次</text>
+  <!-- 回到 ③ 的虚线 -->
+  <path class="back" d="M140,410 L96,410 L96,188 L136,188"/>
+  <text class="step-up" x="88" y="304" text-anchor="end">追问</text>
+  <text class="step-up" x="88" y="320" text-anchor="end">再派</text>
+  <path class="flow" d="M300,436 L300,456"/>
+
+  <!-- ⑦ -->
+  <rect class="main" x="140" y="460" width="320" height="48" rx="10"/>
+  <text class="name" x="160" y="489">⑦ 主 agent 动手</text>
+  <text class="note" x="476" y="480">写代码由主 agent 统一来做</text>
+  <text class="note" x="476" y="498">避免几个子 agent 各改各的</text>
+  <path class="flow" d="M300,510 L300,530"/>
+
+  <!-- ⑧ -->
+  <rect class="me" x="140" y="534" width="320" height="48" rx="10"/>
+  <text class="name-w" x="160" y="563">⑧ 大事由我拍板</text>
+  <text class="note" x="476" y="554">客观问题交给 agent 判断</text>
+  <text class="note" x="476" y="572">权衡取舍留给自己</text>
+</svg>
