@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200" role="img" aria-labelledby="t d">
+  <title id="t">QQ 机器人的消息怎么走</title>
+  <desc id="d">我在 QQ 发消息，消息到服务器上的 AstrBot，AstrBot 带上人格和记忆去问 DeepSeek，DeepSeek 的回答再原路发回 QQ。</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2337ff"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", "Source Han Sans SC", sans-serif; }
+    .box { fill: #f5f6fa; stroke: #c9d0dd; stroke-width: 1.5; }
+    .main { fill: #eef0ff; stroke: #2337ff; stroke-width: 1.5; }
+    .name { font-size: 18px; font-weight: 600; fill: #0f1219; text-anchor: middle; }
+    .sub { font-size: 13px; fill: #60739f; text-anchor: middle; }
+    .line { stroke: #2337ff; stroke-width: 2; marker-end: url(#a); marker-start: url(#a); fill: none; }
+  </style>
+  <rect class="box" x="20" y="50" width="170" height="90" rx="12"/>
+  <text class="name" x="105" y="92">QQ</text>
+  <text class="sub" x="105" y="116">我在这里聊天</text>
+
+  <rect class="main" x="275" y="50" width="170" height="90" rx="12"/>
+  <text class="name" x="360" y="92">AstrBot</text>
+  <text class="sub" x="360" y="116">服务器上，管人格和记忆</text>
+
+  <rect class="box" x="530" y="50" width="170" height="90" rx="12"/>
+  <text class="name" x="615" y="92">DeepSeek</text>
+  <text class="sub" x="615" y="116">负责"想"回答</text>
+
+  <line class="line" x1="196" y1="95" x2="269" y2="95"/>
+  <line class="line" x1="451" y1="95" x2="524" y2="95"/>
+</svg>
